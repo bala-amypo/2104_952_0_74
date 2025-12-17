@@ -7,4 +7,5 @@ public interface StudentService {
     Student poststudent(Student st);
 
 
+
 }
