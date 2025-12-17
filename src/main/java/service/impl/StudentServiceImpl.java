@@ -10,7 +10,7 @@ public class StudentServiceImpl implement StudentService{
     StudentRepository
     @Override
     public Student postStudent(Student st){
-        return 
+        return stdrepo.
 
     }
 
