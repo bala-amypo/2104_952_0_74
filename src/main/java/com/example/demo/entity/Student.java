@@ -47,6 +47,6 @@ public class Student{
         this.cgpa = cgpa;
         this.dob = dob;
     }
-    public Student() {
-    }
+    public Student(){
+}
 }
