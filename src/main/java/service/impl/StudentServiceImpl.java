@@ -7,10 +7,10 @@ import com.example.demo.entity.Student;
 @Service
 public class StudentServiceImpl implement StudentService{
     @Autowired
-    StudentRepository
+    StudentRepository stdrepo
     @Override
     public Student postStudent(Student st){
-        return stdrepo.
+        return stdrepo.save(st);
 
     }
 
