@@ -1,10 +1,49 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
-public interface StudentService{
-     Student poststudent(Student st);
-     List<Student> getAllStudents();
-     Optional<Student> getById(Long id);
-     String updateData(Long id,Student st);
+import com.example.demo.repository.StudentRepository;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+@Autowired
+    StudentRepository stdrepo;
+  @Override
+    public Student poststudent(Student st){
+        return stdrepo.save(st);
+    }
+    @Override
+    public List<Student> getAllStudents(){
+      return stdrepo.findAll();
+    }
+    @Override
+    public Optional<Student> getById(Long id){
+      return stdrepo.findById(id);
+    }  
+    @Override
+    public String updateData(Long id,Student st){
+      boolean status=stdrepo.existsById(id);
+      if(status){
+        st.setId(id);
+        stdrepo.save(st);
+        return "Student updated successfully";
+      }
+      else{
+        return "Student with ID "+id+" not found";
+    
+      }
+    }
+    @Override
+    public String deleteData(Long id){
+      boolean status=stdrepo.existsById(id);
+      if(status){
+        stdrepo.deleteById(id);
+        return "Student deleted successfully";
+      }
+      else{
+        return "Student with Id "+id+" not found";
+      }
+    }
 }

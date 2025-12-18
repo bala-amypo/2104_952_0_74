@@ -23,5 +23,9 @@ public class StudentController{
     @PutMapping("/Update/{id}")
     public String update(@PathVariable Long id, @RequestBody Student st){
         return stdser.updateData(id,st);
-    }
+    }
+    @DeleteMapping("/DeleteBy/{id}")
+    public String delete(@PathVariable Long id){
+        return stdser.deleteData(id);
+        }
 }
