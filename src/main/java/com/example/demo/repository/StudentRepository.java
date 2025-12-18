@@ -1,12 +1,25 @@
-package com.example.demo.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.example.demo.service.impl;
+import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.example.demo.entity.Student;
-import org.springframework.stereotype.Repository;
+import com.example.demo.service.StudentService;
+import com.example.demo.repository.StudentRepository;
 
-@Repository
-public interface StudentRepository extends JpaRepository<Student,Long>{
-   
-  
-
+@Service
+public class StudentServiceImpl implements StudentService{
+@Autowired
+    StudentRepository stdrepo;
+  @Override
+    public Student poststudent(Student st){
+        return stdrepo.save(st);
+    }
+    @Override
+    public List<Student> getAllStudents(){
+      return stdrepo.findAll();
+    }
+    @Override
+    public Optional<Student> getById(Long id){
+      return stdrepo.findById(id);
+    }  
 }
