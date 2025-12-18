@@ -1,12 +1,8 @@
-package com.example.demo.service.impl;
-import java.util.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.example.demo.repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Student;
-import com.example.demo.service.StudentService;
-import com.example.demo.repository.StudentRepository;
+@Repository
+public interface StudentRepository extends JpaRepository<Student,Long>{
 
-@Service
-public class StudentServiceImpl implements StudentService{
-    
 }
